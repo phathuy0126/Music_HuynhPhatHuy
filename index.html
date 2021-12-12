@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="music">
+            <div class="music_avatar">
+                <div class="img">
+                    <img src="https://avatar-ex-swe.nixcdn.com/song/2019/11/25/4/e/8/9/1574651699432_640.jpg" alt="">
+                </div>
+                <div class="music_name">
+                    <strong></strong>
+                </div>
+            </div>
+            <div class="music_timeBar">
+                <div class="range">
+                    <input type="range">
+                </div>
+                <div class="time">
+                    <div class="time_start">
+                        <span>0.00</span>
+                    </div>
+                    <div class="time_end">
+                        <span>3.10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="controls_back">
+                    <i class="bx bx-skip-previous"></i>
+                </div>
+                <div class="controls_play">
+                    <i class="bx bx-play"></i>
+                </div>
+                <div class="controls_next">
+                    <i class="bx bx-skip-next"></i>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+            var audio = document.createElement('audio');
+            $('body').prepend(audio);                                 
+            var music = [
+                'SaiLamCuaAnh.mp3',
+                'TinhYeuMauHong.mp3',
+                'DongPhaiMoDangAi.mp3',
+                'ThuongTham.mp3',
+                'DuongToiChoEmVe.mp3',
+            ];
+            var indexMusic = 0;
+            var lengthMusic = music.length;            
+            $('audio').attr('src', 'source/' + music[indexMusic])
+            function changeMusic(dr) {
+                if (dr === 1) {      
+                    indexMusic++;                                  
+                    if(indexMusic>=lengthMusic) {
+                        indexMusic=0;
+                    }                                                          
+                } else if (dr === -1) {                      
+                    indexMusic--;    
+                    if(indexMusic<0) {
+                        indexMusic=lengthMusic-1;
+                    }                    
+                }
+                $('.music_name strong').text(music[indexMusic]);                  
+                pause();                
+                console.log('stt:'+indexMusic+"_"+music[indexMusic])
+                $('audio').attr('src', 'source/' + music[indexMusic]);
+            }
+            //play pause
+            var isPlaying = true;
+            $('.controls_play').click(function () {                
+                if (isPlaying) {
+                    play();
+                } else {
+                    pause();
+                }
+            })
+            function play() {
+                audio.play();
+                $('.music_avatar .img').addClass('active_avatar');
+                $('.controls_play i').addClass('bx-pause');
+                $('.controls_play i').removeClass('bx-play');
+                isPlaying = false;
+            }
+            function pause() {
+                audio.pause();
+                $('.music_avatar .img').removeClass('active_avatar');
+                $('.controls_play i').removeClass('bx-pause');
+                $('.controls_play i').addClass('bx-play');
+                isPlaying = true;
+            }
+            //next song back song
+            $('.controls_next').click(function () {
+                changeMusic(1);
+                play();
+            })
+            $('.controls_back').click(function () {
+                changeMusic(-1);
+                play();
+            })
+        })        
+    </script>
+</body>
+
+</html>
