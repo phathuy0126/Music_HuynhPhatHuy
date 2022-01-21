@@ -2,15 +2,16 @@ const $ = document.querySelector.bind(document);
 const eleAvatar = $('.music_avatar .img');
 const eleAvatarImg = $('.music_avatar .img img');
 const musicName = $('.music_name strong')
+// const range = $('.music_timeBar .range .inputRange')
 var audio = new (Audio)
-var timeBarRange = document.createElement('input')
-timeBarRange.type = 'range';
-timeBarRange.value = '0';
-timeBarRange.step = '0.1';
-timeBarRange.min = '0';
-timeBarRange.max = '100';
 $('body').append(audio);
-$('.music_timeBar .range').append(timeBarRange)
+const range = document.createElement('input');
+range.type = 'range';
+range.value = 0;
+range.min = 0;
+range.max = 100;
+range.step = 1;
+$('.range').append(range)
 var music = [
     {
         name: 'Sai lầm của anh',
@@ -59,13 +60,11 @@ function changeMusic(dr) {
         if (indexMusic < 0) {
             indexMusic = lengthMusic - 1;
         }
-    }
+    }    
     musicName.innerText = music[indexMusic].name;
     pause();
-    console.log('stt:' + indexMusic + "_" + music[indexMusic].src)
     audio.setAttribute('src', 'source/' + music[indexMusic].src);
     eleAvatarImg.setAttribute('src', 'images/' + music[indexMusic].img);
-
     renderList()
 }
 //play pause
@@ -102,9 +101,9 @@ function pause() {
     isPlaying = true;
 }
 //next song back song
-$('.controls_next').onclick = function () {
+$('.controls_next').onclick = function () {    
     changeMusic(1);
-    play();
+    play();                
 }
 $('.controls_back').onclick = function () {
     changeMusic(-1);
@@ -141,7 +140,7 @@ function changeVolume(dr) {
 //thanh tua       
 audio.ontimeupdate = function () {
     const audioPercent = Math.floor(audio.currentTime / audio.duration * 100);
-    timeBarRange.value = audioPercent;
+    range.value = audioPercent;
     const minutesCurrentTime = Math.floor(audio.currentTime / 60);
     const secondsCurrentTime = audio.currentTime % 60;
     const minutesDuration = Math.floor(audio.duration / 60);
@@ -153,14 +152,8 @@ audio.ontimeupdate = function () {
         play();
     }
 }
-timeBarRange.onchange = function (e) {
+range.oninput = function (e) {
     audio.currentTime = audio.duration / 100 * e.target.value;
-}
-timeBarRange.onmousedown = function () {
-    pause();
-}
-timeBarRange.onmouseup = function () {
-    play();
 }
 //map list card music
 const eleSong = $('.listSong');
@@ -187,7 +180,6 @@ renderList()
 eleSong.onclick = function (e) {
     if (!e.target.closest('.itemSong.active')) {
         const index = e.target.closest('.itemSong').dataset.index;
-        console.log(index, indexMusic);
         indexMusic = Number(index) - 1;
         changeMusic(1);
         play();

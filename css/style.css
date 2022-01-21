@@ -63,6 +63,7 @@ body {
   cursor: pointer;
   -webkit-appearance: none;  
   width: 100%;  
+  -webkit-transition: 0.2s;
 }
 /* range */
 .music_timeBar .range input:focus {
@@ -188,4 +189,10 @@ input[type="range"]:focus::-ms-fill-upper {
   color: rgb(228, 228, 228);
   border: 1px solid #ccc;
   border-radius: 100px;  
+}
+
+@media screen and (max-width: 767.98px) {
+  .listSong {
+    margin-left: 0 !important;
+  }
 }
