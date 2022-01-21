@@ -73,16 +73,30 @@ var isPlaying = true;
 $('.controls_play').onclick = function () {
     isPlaying ? play() : pause();
 }
+const RotateAvatar = eleAvatar.animate([
+    { transform: 'rotate(0deg)' },
+    { transform: 'rotate(360deg)' },
+], {
+    duration: 10000,
+    iterations: Infinity
+});
+RotateAvatar.pause();
 function play() {
     audio.play();
-    eleAvatar.classList.add('active_avatar');
+    // eleAvatar.animate([
+    //     { transform: 'rotate(360deg)' }
+    // ], {
+    //     duration: 1000,
+    //     iterations: Infinity
+    // });       
+    RotateAvatar.play();
     $('.controls_play i').classList.add('bx-pause');
     $('.controls_play i').classList.remove('bx-play');
     isPlaying = false;
 }
 function pause() {
     audio.pause();
-    eleAvatar.classList.remove('active_avatar');
+    RotateAvatar.pause();
     $('.controls_play i').classList.remove('bx-pause');
     $('.controls_play i').classList.add('bx-play');
     isPlaying = true;
@@ -125,13 +139,13 @@ function changeVolume(dr) {
     // }, 5000);
 }
 //thanh tua       
-audio.ontimeupdate = function () {    
+audio.ontimeupdate = function () {
     const audioPercent = Math.floor(audio.currentTime / audio.duration * 100);
     timeBarRange.value = audioPercent;
     const minutesCurrentTime = Math.floor(audio.currentTime / 60);
     const secondsCurrentTime = audio.currentTime % 60;
     const minutesDuration = Math.floor(audio.duration / 60);
-    const secondsDuration = audio.duration % 60;    
+    const secondsDuration = audio.duration % 60;
     $('.time_end span').innerText = `${isNaN(minutesDuration) ? '3' : Math.floor(minutesDuration)}:${isNaN(secondsDuration) ? '00' : Math.floor(secondsDuration)}`
     $('.time_start span').innerText = `${Math.floor(minutesCurrentTime)}:${Math.floor(secondsCurrentTime)}`
     if (audio.currentTime >= audio.duration) {
