@@ -124,16 +124,15 @@ function changeVolume(dr) {
     //     clearInterval(ha)
     // }, 5000);
 }
-
 //thanh tua       
-audio.ontimeupdate = function () {
+audio.ontimeupdate = function () {    
     const audioPercent = Math.floor(audio.currentTime / audio.duration * 100);
     timeBarRange.value = audioPercent;
     const minutesCurrentTime = Math.floor(audio.currentTime / 60);
     const secondsCurrentTime = audio.currentTime % 60;
     const minutesDuration = Math.floor(audio.duration / 60);
-    const secondsDuration = audio.duration % 60;
-    $('.time_end span').innerText = `${Math.floor(minutesDuration)}:${Math.floor(secondsDuration)}`
+    const secondsDuration = audio.duration % 60;    
+    $('.time_end span').innerText = `${isNaN(minutesDuration) ? '3' : Math.floor(minutesDuration)}:${isNaN(secondsDuration) ? '00' : Math.floor(secondsDuration)}`
     $('.time_start span').innerText = `${Math.floor(minutesCurrentTime)}:${Math.floor(secondsCurrentTime)}`
     if (audio.currentTime >= audio.duration) {
         changeMusic(1);
@@ -143,7 +142,12 @@ audio.ontimeupdate = function () {
 timeBarRange.onchange = function (e) {
     audio.currentTime = audio.duration / 100 * e.target.value;
 }
-
+timeBarRange.onmousedown = function () {
+    pause();
+}
+timeBarRange.onmouseup = function () {
+    play();
+}
 //map list card music
 const eleSong = $('.listSong');
 function renderList() {
