@@ -27,10 +27,10 @@
                 </div>
                 <div class="time">
                     <div class="time_start">
-                        <span>0</span>
+                        <span></span>
                     </div>
                     <div class="time_end">
-                        <span>290</span>
+                        <span></span>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,51 @@
                 }
             </style>
         </div>
-        <div class="rangeVolume">
+        <div class="listSong">
+
+        </div>
+        <style>
+            .listSong {
+                margin-left: 20px;
+            }
+
+            .listSong .itemSong {
+                display: flex;
+                align-items: center;
+                margin: 10px;
+                padding: 2px 8px;
+                cursor: pointer;
+                border-radius: 7px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+            }
+
+            .listSong .itemSong.active {                
+                color: rgb(236, 236, 236);
+                background: rgb(131, 58, 180);
+                background: linear-gradient(90deg,
+                        rgba(131, 58, 180, 1) 0%,
+                        rgba(255, 70, 61, 1) 50%,
+                        rgba(252, 176, 69, 1) 100%);
+                border: 1px solid rgb(255, 118, 26);
+            }
+
+            .listSong .itemSong .songImg {
+                width: 100px;
+                height: 70px;
+            }
+
+            .listSong .itemSong .songImg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 7px;
+            }
+
+            .listSong .itemSong .songText {
+                padding: 5px;
+            }
+        </style>
+        <!-- <div class="rangeVolume">
             <div></div>
         </div>
         <style>
@@ -124,11 +168,8 @@
                 width: 100%;
                 height: 100%;         
             }                
-        </style>
+        </style> -->
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/app.js"></script>
 </body>
 
