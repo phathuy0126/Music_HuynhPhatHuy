@@ -63,6 +63,7 @@ body {
   cursor: pointer;
   -webkit-appearance: none;  
   width: 100%;  
+  transition: .2s;
   -webkit-transition: 0.2s;
 }
 /* range */

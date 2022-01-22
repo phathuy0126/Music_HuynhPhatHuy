@@ -1,18 +1,19 @@
+"use strict";
 const $ = document.querySelector.bind(document);
 const eleAvatar = $('.music_avatar .img');
 const eleAvatarImg = $('.music_avatar .img img');
-const musicName = $('.music_name strong')
-// const range = $('.music_timeBar .range .inputRange')
-var audio = new (Audio)
-$('body').append(audio);
-const range = document.createElement('input');
-range.type = 'range';
-range.value = 0;
-range.min = 0;
-range.max = 100;
-range.step = 1;
-$('.range').append(range)
-var music = [
+const musicName = $('.music_name strong');
+const audio = $('.range audio');
+const range = $('.music_timeBar .range .inputRange');
+// $('body').append(audio);
+// const range = document.createElement('input');
+// range.type = 'range';
+// range.value = 0;
+// range.min = 0;
+// range.max = 100;
+// range.step = 1;
+// $('.range').append(range)
+const music = [
     {
         name: 'Sai lầm của anh',
         src: 'SaiLamCuaAnh.mp3',
@@ -44,8 +45,8 @@ var music = [
         nameSinger: 'Phát Huy',
     }
 ]
-var indexMusic = 0;
-var lengthMusic = music.length;
+let indexMusic = 0;
+const lengthMusic = music.length;
 audio.setAttribute('src', 'source/' + music[indexMusic].src);
 eleAvatarImg.setAttribute('src', 'images/' + music[indexMusic].img);
 musicName.innerText = music[indexMusic].name;
@@ -60,15 +61,15 @@ function changeMusic(dr) {
         if (indexMusic < 0) {
             indexMusic = lengthMusic - 1;
         }
-    }    
+    }
     musicName.innerText = music[indexMusic].name;
     pause();
     audio.setAttribute('src', 'source/' + music[indexMusic].src);
     eleAvatarImg.setAttribute('src', 'images/' + music[indexMusic].img);
-    renderList()
+    renderList();
 }
 //play pause
-var isPlaying = true;
+let isPlaying = true;
 $('.controls_play').onclick = function () {
     isPlaying ? play() : pause();
 }
@@ -101,9 +102,9 @@ function pause() {
     isPlaying = true;
 }
 //next song back song
-$('.controls_next').onclick = function () {    
+$('.controls_next').onclick = function () {
     changeMusic(1);
-    play();                
+    play();
 }
 $('.controls_back').onclick = function () {
     changeMusic(-1);
@@ -131,16 +132,16 @@ function changeVolume(dr) {
         }
     }
     // document.querySelector('.rangeVolume p').style.display = 'block';
-    // var haha = setInterval(() => {
-    //     var ha = document.querySelector('.rangeVolume p').style.display = 'none';
+    // const haha = setInterval(() => {
+    //     const ha = document.querySelector('.rangeVolume p').style.display = 'none';
     //     console.log('haha')
     //     clearInterval(ha)
     // }, 5000);
 }
 //thanh tua       
-audio.ontimeupdate = function () {
+audio.ontimeupdate = function () {            
     const audioPercent = Math.floor(audio.currentTime / audio.duration * 100);
-    range.value = audioPercent;
+    range.value = audioPercent;    
     const minutesCurrentTime = Math.floor(audio.currentTime / 60);
     const secondsCurrentTime = audio.currentTime % 60;
     const minutesDuration = Math.floor(audio.duration / 60);

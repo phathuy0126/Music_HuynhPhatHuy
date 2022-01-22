@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP3</title>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/style.css">  
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -22,15 +22,16 @@
                 </div>
             </div>
             <div class="music_timeBar">
-                <div class="range">                    
-                    <!-- <input type="range" min="0" max="100" step="1" value="0" class="inputRange"> -->
+                <div class="range">
+                    <input type="range" class="inputRange" value="0" min="0" max="100" step="1">
+                    <audio src="" ></audio>
                 </div>
                 <div class="time">
                     <div class="time_start">
-                        <span></span>
+                        <span>0:00</span>
                     </div>
                     <div class="time_end">
-                        <span></span>
+                        <span>3:00</span>
                     </div>
                 </div>
             </div>
@@ -106,11 +107,16 @@
                 }
             </style>
         </div>
-        <h3>List Songs</h3>
-        <div class="listSong">
-            
+        <div class="listSongs">
+            <h3 class="title">List Songs</h3>
+            <div class="listSong">
+
+            </div>
         </div>
         <style>
+            .listSongs .title {
+                text-align: center;
+            }
             .listSong {
                 margin-left: 20px;
             }
@@ -125,7 +131,7 @@
                 box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
             }
 
-            .listSong .itemSong.active {                
+            .listSong .itemSong.active {
                 color: rgb(236, 236, 236);
                 background: rgb(131, 58, 180);
                 background: linear-gradient(90deg,
@@ -170,7 +176,7 @@
                 height: 100%;         
             }                
         </style> -->
-    </div>    
+    </div>
     <script src="./js/app.js"></script>
 </body>
 
