@@ -15,6 +15,7 @@ body {
   flex-wrap: wrap;
 }
 .music {
+  margin-top: 20px;
   width: 50%;
   min-width: 300px;
   padding: 20px 0px;   
@@ -87,12 +88,13 @@ body {
   background: #03ff42;
   cursor: pointer;
   -webkit-appearance: none;  
-  border: 1px solid #00741d;
+  border: 1px solid #00741d;  
 }
-/* input[type="range"]:focus::-webkit-slider-runnable-track {
+/* bỏ  */
+.music_timeBar .range input:focus::-webkit-slider-runnable-track {
   background: #ccc;
 }
-input[type="range"]::-moz-range-track {
+.music_timeBar .range input::-moz-range-track {
   width: 100%;
   height: 12.8px;
   cursor: pointer;
@@ -102,7 +104,7 @@ input[type="range"]::-moz-range-track {
   border-radius: 25px;
   border: 0px solid #000101;
 }
-input[type="range"]::-moz-range-thumb {
+.music_timeBar .range input::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
   border: 0px solid #000000;
   height: 20px;
@@ -111,7 +113,7 @@ input[type="range"]::-moz-range-thumb {
   background: #65001c;
   cursor: pointer;
 }
-input[type="range"]::-ms-track {
+.music_timeBar .range input::-ms-track {
   width: 100%;
   height: 12.8px;
   cursor: pointer;
@@ -121,19 +123,19 @@ input[type="range"]::-ms-track {
   border-width: 39px 0;
   color: transparent;
 }
-input[type="range"]::-ms-fill-lower {
+.music_timeBar .range input::-ms-fill-lower {
   background: #ac51b5;
   border: 0px solid #000101;
   border-radius: 50px;
   box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
-input[type="range"]::-ms-fill-upper {
+.music_timeBar .range input::-ms-fill-upper {
   background: #ac51b5;
   border: 0px solid #000101;
   border-radius: 50px;
   box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
-input[type="range"]::-ms-thumb {
+.music_timeBar .range input::-ms-thumb {
   box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
   border: 0px solid #000000;
   height: 20px;
@@ -142,12 +144,12 @@ input[type="range"]::-ms-thumb {
   background: #65001c;
   cursor: pointer;
 }
-input[type="range"]:focus::-ms-fill-lower {
+.music_timeBar .range input:focus::-ms-fill-lower {
   background: #ac51b5;
 }
-input[type="range"]:focus::-ms-fill-upper {
+.music_timeBar .range input:focus::-ms-fill-upper {
   background: #ac51b5;
-} */
+}
 /* range */
 .music_timeBar .time {
   display: flex;

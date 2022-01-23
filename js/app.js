@@ -3,16 +3,18 @@ const $ = document.querySelector.bind(document);
 const eleAvatar = $('.music_avatar .img');
 const eleAvatarImg = $('.music_avatar .img img');
 const musicName = $('.music_name strong');
-const audio = $('.range audio');
-const range = $('.music_timeBar .range .inputRange');
-// $('body').append(audio);
-// const range = document.createElement('input');
-// range.type = 'range';
-// range.value = 0;
-// range.min = 0;
-// range.max = 100;
-// range.step = 1;
-// $('.range').append(range)
+const controlsPlay = $('.controls_play i')
+const audio = new(Audio);
+// const audio = $('.range audio');
+// const range = $('.music_timeBar .range .inputRange');
+$('body').append(audio);
+const range = document.createElement('input');
+range.type = 'range';
+range.value = 0;
+range.min = 0;
+range.max = 100;
+range.step = 1;
+$('.range').append(range)
 const music = [
     {
         name: 'Sai lầm của anh',
@@ -51,7 +53,7 @@ audio.setAttribute('src', 'source/' + music[indexMusic].src);
 eleAvatarImg.setAttribute('src', 'images/' + music[indexMusic].img);
 musicName.innerText = music[indexMusic].name;
 function changeMusic(dr) {
-    if (dr === 1) {
+    if (dr === 1) {        
         indexMusic++;
         if (indexMusic >= lengthMusic) {
             indexMusic = 0;
@@ -61,7 +63,7 @@ function changeMusic(dr) {
         if (indexMusic < 0) {
             indexMusic = lengthMusic - 1;
         }
-    }
+    }    
     musicName.innerText = music[indexMusic].name;
     pause();
     audio.setAttribute('src', 'source/' + music[indexMusic].src);
@@ -90,15 +92,15 @@ function play() {
     //     iterations: Infinity
     // });       
     RotateAvatar.play();
-    $('.controls_play i').classList.add('bx-pause');
-    $('.controls_play i').classList.remove('bx-play');
+    controlsPlay.classList.add('bx-pause');
+    controlsPlay.classList.remove('bx-play');
     isPlaying = false;
 }
 function pause() {
     audio.pause();
     RotateAvatar.pause();
-    $('.controls_play i').classList.remove('bx-pause');
-    $('.controls_play i').classList.add('bx-play');
+    controlsPlay.classList.remove('bx-pause');
+    controlsPlay.classList.add('bx-play');
     isPlaying = true;
 }
 //next song back song
@@ -138,20 +140,20 @@ function changeVolume(dr) {
     //     clearInterval(ha)
     // }, 5000);
 }
-//thanh tua       
-audio.ontimeupdate = function () {            
+//thanh tua   
+audio.ontimeupdate = function () {
     const audioPercent = Math.floor(audio.currentTime / audio.duration * 100);
-    range.value = audioPercent;    
+    range.value = audioPercent;
     const minutesCurrentTime = Math.floor(audio.currentTime / 60);
     const secondsCurrentTime = audio.currentTime % 60;
     const minutesDuration = Math.floor(audio.duration / 60);
     const secondsDuration = audio.duration % 60;
     $('.time_end span').innerText = `${isNaN(minutesDuration) ? '3' : Math.floor(minutesDuration)}:${isNaN(secondsDuration) ? '00' : Math.floor(secondsDuration)}`
     $('.time_start span').innerText = `${Math.floor(minutesCurrentTime)}:${Math.floor(secondsCurrentTime)}`
-    if (audio.currentTime >= audio.duration) {
-        changeMusic(1);
-        play();
-    }
+}
+audio.onended = function () {
+    changeMusic(1);
+    play();
 }
 range.oninput = function (e) {
     audio.currentTime = audio.duration / 100 * e.target.value;
