@@ -76,12 +76,9 @@ body {
   height: 2px;  
   cursor: pointer;  
   background: #ccc;    
-  position: relative;
 }
 .music_timeBar .range input::-webkit-slider-thumb {    
-  position: absolute;
-  top: 50%;  
-  transform: translateY(-50%);  
+  transform: translateY(-50%);
   height: 15px;
   width: 15px;
   border-radius: 100px;
