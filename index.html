@@ -26,7 +26,6 @@
                     <!-- <input type="range" class="inputRange" value="0" min="0" max="100" step="1" >
                     <audio src="" ></audio> -->
                 </div>
-                <input type="range" value="0" min="0" max="100" step="1">
                 <div class="time">
                     <div class="time_start">
                         <span>0:00</span>
@@ -91,12 +90,9 @@
                     height: 2px;
                     cursor: pointer;
                     background: #ccc;
-                    position: relative;
                 }
 
                 .volume input::-webkit-slider-thumb {
-                    position: absolute;
-                    top: 50%;
                     transform: translateY(-50%);
                     height: 15px;
                     width: 15px;
@@ -200,14 +196,10 @@
             height: 20px;
             cursor: pointer;
             background: #fff;
-            position: relative;
             border-radius: 10px;
         }
 
         #rangeVolume::-webkit-slider-thumb {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);            
             height: 20px;
             width: 20px;
             background: #03ff42;
