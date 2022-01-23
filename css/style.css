@@ -90,8 +90,8 @@ body {
   -webkit-appearance: none;  
   border: 1px solid #00741d;  
 }
-/* bỏ  */
-.music_timeBar .range input:focus::-webkit-slider-runnable-track {
+
+/* .music_timeBar .range input:focus::-webkit-slider-runnable-track {
   background: #ccc;
 }
 .music_timeBar .range input::-moz-range-track {
@@ -149,7 +149,7 @@ body {
 }
 .music_timeBar .range input:focus::-ms-fill-upper {
   background: #ac51b5;
-}
+} */
 /* range */
 .music_timeBar .time {
   display: flex;
