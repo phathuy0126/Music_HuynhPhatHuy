@@ -3,6 +3,7 @@ const $ = document.querySelector.bind(document);
 const eleAvatar = $('.music_avatar .img');
 const eleAvatarImg = $('.music_avatar .img img');
 const musicName = $('.music_name strong');
+const rangeVolume = $('#rangeVolume');
 const controlsPlay = $('.controls_play i')
 const audio = new(Audio);
 // const audio = $('.range audio');
@@ -123,16 +124,19 @@ function changeVolume(dr) {
     if (dr === 1) {
         if (audio.volume < 1) {
             audio.volume += 0.1;
-        } else {
-            audio.volume = 1;
-        }
+        }    
     } else if (dr === -1) {
         if (audio.volume > 0) {
             audio.volume -= 0.1;
-        } else {
-            audio.volume = 0;
         }
     }
+    rangeVolume.value = Math.floor(audio.volume * 100)
+    rangeVolume.style.left = 0;    
+    if (rangeVolume.style.left == '0px') {
+        setTimeout(function () {
+            rangeVolume.style.left = '-100px';                                    
+        },3000)                
+    }    
     // document.querySelector('.rangeVolume p').style.display = 'block';
     // const haha = setInterval(() => {
     //     const ha = document.querySelector('.rangeVolume p').style.display = 'none';

@@ -23,7 +23,7 @@
             </div>
             <div class="music_timeBar">
                 <div class="range">
-                    <input type="range" value="0" min="0" max="100" step="1" >
+                    <input type="range" value="0" min="0" max="100" step="1">
                     <!-- <input type="range" class="inputRange" value="0" min="0" max="100" step="1" >
                     <audio src="" ></audio> -->
                 </div>
@@ -118,6 +118,7 @@
             .listSongs .title {
                 text-align: center;
             }
+
             .listSong {
                 margin-left: 20px;
             }
@@ -177,7 +178,44 @@
                 height: 100%;         
             }                
         </style> -->
-    </div>
+        <input type="range" name="rangeVolume" id="rangeVolume" value="100" min="0" max="100" step="1">
+    </div>    
+    <style>
+        #rangeVolume {
+            position: absolute;
+            left: -100px;
+            top: 150px;
+            transform: rotate(-90deg);
+            cursor: pointer;
+            -webkit-appearance: none;            
+            transition: .5s ease;
+        }
+
+        /* range */
+        #rangeVolume:focus {
+            outline: none;
+        }
+
+        #rangeVolume::-webkit-slider-runnable-track {
+            height: 20px;
+            cursor: pointer;
+            background: #fff;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        #rangeVolume::-webkit-slider-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);            
+            height: 20px;
+            width: 20px;
+            background: #03ff42;
+            cursor: pointer;
+            -webkit-appearance: none;
+            border: 1px solid #00741d;
+        }
+    </style>
     <script src="./js/app.js"></script>
 </body>
 
