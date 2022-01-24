@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="music_timeBar">
-                <div class="range">                    
+                <div class="range">
                     <!-- <input type="range" class="inputRange" value="0" min="0" max="100" step="1" >
                     <audio src="" ></audio> -->
                 </div>
@@ -174,38 +174,61 @@
                 height: 100%;         
             }                
         </style> -->
-        <input type="range" name="rangeVolume" id="rangeVolume" value="100" min="0" max="100" step="1">
-    </div>    
+        <div class="rangeVolume">
+            <input type="range" name="rangeVolume" id="rangeVolume" value="100" min="0" max="100" step="1">
+            <div class="icon">
+                <i class="bx bx-bell"></i>
+            </div>
+        </div>
+    </div>
     <style>
-        #rangeVolume {
+        .rangeVolume {
             position: absolute;
             left: -100px;
             top: 150px;
-            transform: rotate(-90deg);
-            cursor: pointer;
-            -webkit-appearance: none;            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             transition: .5s ease;
         }
 
+        .rangeVolume #rangeVolume {
+            transform: rotate(-90deg);
+            cursor: pointer;
+            -webkit-appearance: none;
+            border: 1px #ccc solid;
+        }
+
         /* range */
-        #rangeVolume:focus {
+        .rangeVolume #rangeVolume:focus {
             outline: none;
         }
 
-        #rangeVolume::-webkit-slider-runnable-track {
+        .rangeVolume #rangeVolume::-webkit-slider-runnable-track {
             height: 20px;
             cursor: pointer;
             background: #fff;
-            border-radius: 10px;
         }
 
-        #rangeVolume::-webkit-slider-thumb {
+        .rangeVolume #rangeVolume::-webkit-slider-thumb {
             height: 20px;
             width: 20px;
             background: #03ff42;
             cursor: pointer;
             -webkit-appearance: none;
             border: 1px solid #00741d;
+        }
+
+        .rangeVolume .icon {
+            width: 22px;
+            height: 22px;
+            transform: translateY(58px);
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+            cursor: pointer;
         }
     </style>
     <script src="./js/app.js"></script>

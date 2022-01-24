@@ -11,11 +11,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-wrap: wrap;
+  padding-top: 405px;
 }
 .music {
-  margin-top: 20px;
   width: 50%;
   min-width: 300px;
   padding: 20px 0px;   
@@ -29,7 +28,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  position: fixed;
+  top: 0px;
 }
 .music_avatar {
   margin-top: 30px;
@@ -38,6 +38,7 @@ body {
 .music_avatar .img {
   width: 170px;
   height: 170px;
+  margin: auto;
   border-radius: 100px;
   overflow: hidden;    
 }

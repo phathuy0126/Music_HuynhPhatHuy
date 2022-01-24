@@ -3,6 +3,7 @@ const $ = document.querySelector.bind(document);
 const eleAvatar = $('.music_avatar .img');
 const eleAvatarImg = $('.music_avatar .img img');
 const musicName = $('.music_name strong');
+const boxRangeVolume = $('.rangeVolume')
 const rangeVolume = $('#rangeVolume');
 const controlsPlay = $('.controls_play i')
 const audio = new(Audio);
@@ -17,6 +18,36 @@ range.max = 100;
 range.step = 1;
 $('.range').append(range)
 const music = [
+    {
+        name: 'Sai lầm của anh',
+        src: 'SaiLamCuaAnh.mp3',
+        img: 'SaiLamCuaAnh.jpg',
+        nameSinger: 'Lê Bảo Bình',
+    },
+    {
+        name: 'Tình yêu màu hồng',
+        src: 'TinhYeuMauHong.mp3',
+        img: 'TinhYeuMauHong.jpg',
+        nameSinger: 'Hồ Văn Quí',
+    },
+    {
+        name: 'Đông phai mờ dáng ai',
+        src: 'DongPhaiMoDangAi.mp3',
+        img: 'DongPhaiMoDangAi.jpg',
+        nameSinger: 'Datkka',
+    },
+    {
+        name: 'Thương thầm',
+        src: 'ThuongTham.mp3',
+        img: 'ThuongTham.jpg',
+        nameSinger: 'Hoài Bảo',
+    },
+    {
+        name: 'Đường tôi chở em về',
+        src: 'DuongToiChoEmVe.mp3',
+        img: 'DuongToiChoEmVe.jpg',
+        nameSinger: 'Phát Huy',
+    },
     {
         name: 'Sai lầm của anh',
         src: 'SaiLamCuaAnh.mp3',
@@ -131,10 +162,10 @@ function changeVolume(dr) {
         }
     }
     rangeVolume.value = Math.floor(audio.volume * 100)
-    rangeVolume.style.left = 0;    
-    if (rangeVolume.style.left == '0px') {
-        setTimeout(function () {
-            rangeVolume.style.left = '-100px';                                    
+    boxRangeVolume.style.left = 0;    
+    if (boxRangeVolume.style.left == '0px') {
+        setTimeout(function () {             
+            boxRangeVolume.style.left = '-100px';                                    
         },3000)                
     }    
     // document.querySelector('.rangeVolume p').style.display = 'block';
@@ -192,3 +223,14 @@ eleSong.onclick = function (e) {
         play();
     }
 }
+
+const eleAvatarBox = $('.music .music_avatar .img')
+const offsetWAvatar = eleAvatarBox.offsetWidth
+window.addEventListener('scroll',function () {
+    if (window.scrollY >= offsetWAvatar) {
+        eleAvatarBox.style.width = 0;
+        eleAvatarBox.style.height = 0;        
+    }
+    eleAvatarBox.style.width = offsetWAvatar - window.scrollY + 'px'; 
+    eleAvatarBox.style.height = offsetWAvatar - window.scrollY + 'px';             
+})
