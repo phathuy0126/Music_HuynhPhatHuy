@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <div class="music">
+        <div class="music" style="transition: all .3s ease;">
             <div class="music_avatar">
                 <div class="img">
                     <img src="" alt="">
@@ -51,58 +51,6 @@
                 <div class="tang">+</div>
                 <div class="giam">-</div>
             </div>
-            <style>
-                .volume {
-                    position: absolute;
-                    right: 10px;
-                    top: 10px;
-                }
-
-                .volume div {
-                    width: 30px;
-                    height: 30px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    margin-bottom: 10px;
-                    color: #ccc;
-                    font-size: 1.3em;
-                    cursor: pointer;
-                }
-
-                /* range */
-                .volume input {
-                    width: 100%;
-                    cursor: pointer;
-                    -webkit-appearance: none;
-                    width: 100%;
-                }
-
-                /* range */
-                .volume input:focus {
-                    outline: none;
-                }
-
-                .volume input::-webkit-slider-runnable-track {
-                    width: 100%;
-                    height: 2px;
-                    cursor: pointer;
-                    background: #ccc;
-                }
-
-                .volume input::-webkit-slider-thumb {
-                    transform: translateY(-50%);
-                    height: 15px;
-                    width: 15px;
-                    border-radius: 100px;
-                    background: #03ff42;
-                    cursor: pointer;
-                    -webkit-appearance: none;
-                    border: 1px solid #00741d;
-                }
-            </style>
         </div>
         <div class="listSongs">
             <h3 class="title">List Songs</h3>
@@ -110,51 +58,6 @@
 
             </div>
         </div>
-        <style>
-            .listSongs .title {
-                text-align: center;
-            }
-
-            .listSong {
-                margin-left: 20px;
-            }
-
-            .listSong .itemSong {
-                display: flex;
-                align-items: center;
-                margin: 10px;
-                padding: 2px 8px;
-                cursor: pointer;
-                border-radius: 7px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-            }
-
-            .listSong .itemSong.active {
-                color: rgb(236, 236, 236);
-                background: rgb(131, 58, 180);
-                background: linear-gradient(90deg,
-                        rgba(131, 58, 180, 1) 0%,
-                        rgba(255, 70, 61, 1) 50%,
-                        rgba(252, 176, 69, 1) 100%);
-                border: 1px solid rgb(255, 118, 26);
-            }
-
-            .listSong .itemSong .songImg {
-                width: 100px;
-                height: 70px;
-            }
-
-            .listSong .itemSong .songImg img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 7px;
-            }
-
-            .listSong .itemSong .songText {
-                padding: 5px;
-            }
-        </style>
         <!-- <div class="rangeVolume">
             <div></div>
         </div>
@@ -181,56 +84,9 @@
             </div>
         </div>
     </div>
-    <style>
-        .rangeVolume {
-            position: absolute;
-            left: -100px;
-            top: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: .5s ease;
-        }
-
-        .rangeVolume #rangeVolume {
-            transform: rotate(-90deg);
-            cursor: pointer;
-            -webkit-appearance: none;
-            border: 1px #ccc solid;
-        }
-
-        /* range */
-        .rangeVolume #rangeVolume:focus {
-            outline: none;
-        }
-
-        .rangeVolume #rangeVolume::-webkit-slider-runnable-track {
-            height: 20px;
-            cursor: pointer;
-            background: #fff;
-        }
-
-        .rangeVolume #rangeVolume::-webkit-slider-thumb {
-            height: 20px;
-            width: 20px;
-            background: #03ff42;
-            cursor: pointer;
-            -webkit-appearance: none;
-            border: 1px solid #00741d;
-        }
-
-        .rangeVolume .icon {
-            width: 22px;
-            height: 22px;
-            transform: translateY(58px);
-            border: 1px solid #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 2px;
-            cursor: pointer;
-        }
-    </style>
+    <div class="upTop">
+        <i class='bx bx-chevron-up-circle'></i>
+    </div>
     <script src="./js/app.js"></script>
 </body>
 

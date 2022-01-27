@@ -1,12 +1,16 @@
 "use strict";
 const $ = document.querySelector.bind(document);
+const containerMusic = $('.music')
 const eleAvatar = $('.music_avatar .img');
 const eleAvatarImg = $('.music_avatar .img img');
 const musicName = $('.music_name strong');
 const boxRangeVolume = $('.rangeVolume')
 const rangeVolume = $('#rangeVolume');
 const controlsPlay = $('.controls_play i')
-const audio = new(Audio);
+const musicTimebar = $('.music_timeBar')
+const volume = $('.volume')
+const upTop = $('.upTop')
+const audio = new (Audio);
 // const audio = $('.range audio');
 // const range = $('.music_timeBar .range .inputRange');
 $('body').append(audio);
@@ -85,7 +89,7 @@ audio.setAttribute('src', 'source/' + music[indexMusic].src);
 eleAvatarImg.setAttribute('src', 'images/' + music[indexMusic].img);
 musicName.innerText = music[indexMusic].name;
 function changeMusic(dr) {
-    if (dr === 1) {        
+    if (dr === 1) {
         indexMusic++;
         if (indexMusic >= lengthMusic) {
             indexMusic = 0;
@@ -95,7 +99,7 @@ function changeMusic(dr) {
         if (indexMusic < 0) {
             indexMusic = lengthMusic - 1;
         }
-    }    
+    }
     musicName.innerText = music[indexMusic].name;
     pause();
     audio.setAttribute('src', 'source/' + music[indexMusic].src);
@@ -155,19 +159,19 @@ function changeVolume(dr) {
     if (dr === 1) {
         if (audio.volume < 1) {
             audio.volume += 0.1;
-        }    
+        }
     } else if (dr === -1) {
         if (audio.volume > 0) {
             audio.volume -= 0.1;
         }
     }
     rangeVolume.value = Math.floor(audio.volume * 100)
-    boxRangeVolume.style.left = 0;    
+    boxRangeVolume.style.left = 0;
     if (boxRangeVolume.style.left == '0px') {
-        setTimeout(function () {             
-            boxRangeVolume.style.left = '-100px';                                    
-        },3000)                
-    }    
+        setTimeout(function () {
+            boxRangeVolume.style.left = '-100px';
+        }, 3000)
+    }
     // document.querySelector('.rangeVolume p').style.display = 'block';
     // const haha = setInterval(() => {
     //     const ha = document.querySelector('.rangeVolume p').style.display = 'none';
@@ -226,11 +230,23 @@ eleSong.onclick = function (e) {
 
 const eleAvatarBox = $('.music .music_avatar .img')
 const offsetWAvatar = eleAvatarBox.offsetWidth
-window.addEventListener('scroll',function () {
+window.addEventListener('scroll', function () {
     if (window.scrollY >= offsetWAvatar) {
+        containerMusic.style.width = '100%'
         eleAvatarBox.style.width = 0;
-        eleAvatarBox.style.height = 0;        
+        eleAvatarBox.style.height = 0;
+        musicTimebar.style.height = 0;
+        volume.style.height = 0
+        upTop.style.display = 'block'
+    } else {
+        containerMusic.style.width = '50%'
+        musicTimebar.style.height = 'fit-content';
+        upTop.style.display = 'none'
+        volume.style.height = 'fit-content';
     }
-    eleAvatarBox.style.width = offsetWAvatar - window.scrollY + 'px'; 
-    eleAvatarBox.style.height = offsetWAvatar - window.scrollY + 'px';             
+    eleAvatarBox.style.width = offsetWAvatar - window.scrollY + 'px';
+    eleAvatarBox.style.height = offsetWAvatar - window.scrollY + 'px';
 })
+upTop.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
